@@ -74,7 +74,7 @@ public class StartupData implements CommandLineRunner {
 
     private void exampleProducts(){
         final String NAME = "Example Name";
-        final String IMAGE_URL = "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX7389458.jpg";
+        final String IMAGE_URL = "4c19f86a-be58-4bad-a3fe-5a26a69af25a.jpg";
         final String DESCRIPTION = "Example Description";
         final BigDecimal PRICE = BigDecimal.valueOf(22);
 

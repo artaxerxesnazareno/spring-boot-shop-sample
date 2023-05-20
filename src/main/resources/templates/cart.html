@@ -34,6 +34,8 @@
     <br>
     <div class="row">
         <h3 th:text="#{cart.total} + ' ' + ${totalPrice}"></h3>">
+        <span th:text="#{cart.total} + ' ' + ${productsCount}"></span>
+
         <a th:href="@{'/cart/checkout'}" class="col-md-1">
             <button type="button" class="btn btn-success" th:text="#{cart.checkout}"></button>
         </a>

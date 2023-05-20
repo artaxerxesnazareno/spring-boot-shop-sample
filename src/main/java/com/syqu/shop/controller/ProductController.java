@@ -85,7 +85,7 @@ public class ProductController {
     }
 
     @PostMapping("/product/edit/{id}")
-    public String editProduct(@PathVariable("id") long productId, @ModelAttribute("productForm") Product productForm, BindingResult bindingResult, Model model){
+    public String editProduct(@PathVariable("id") long productId, @ModelAttribute("productForm") Product productForm, BindingResult bindingResult, Model model, HttpServletRequest request) throws IOException {
         productValidator.validate(productForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
