@@ -1,14 +1,15 @@
 package com.syqu.shop.domain;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
-import lombok.Getter;
-import lombok.Setter;
 
 
 @Getter
@@ -18,6 +19,8 @@ import lombok.Setter;
 @Table(name = "product")
 public class Product {
 
+    @Transient
+    private MultipartFile imageFile;
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -58,5 +61,12 @@ public class Product {
         return Objects.hash(id);
     }
 
+    public MultipartFile getImageFile() {
+        return imageFile;
+    }
+
+    public void setImageFile(MultipartFile imageFile) {
+        this.imageFile = imageFile;
+    }
 }
 
