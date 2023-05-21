@@ -35,7 +35,7 @@ public class Product {
     @JoinColumn(name = "category_id", nullable = true)
     private Category category;
 
-    @Column(name = "description",length = 500)
+    @Column(name = "description",length = 2000)
     @NotNull
     @NotEmpty
     private String description;
