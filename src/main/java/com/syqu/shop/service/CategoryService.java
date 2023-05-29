@@ -1,6 +1,6 @@
 package com.syqu.shop.service;
 
-import com.syqu.shop.domain.Category;
+import com.syqu.shop.model.Category;
 
 import java.util.List;
 

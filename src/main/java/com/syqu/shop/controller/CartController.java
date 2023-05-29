@@ -1,7 +1,10 @@
 package com.syqu.shop.controller;
 
+import com.syqu.shop.model.PedidosSapatos;
+import com.syqu.shop.repository.PedidosSapatosRepository;
+import com.syqu.shop.service.PedidosSapatosService;
 import com.syqu.shop.service.ShoppingCartService;
-import com.syqu.shop.domain.Product;
+import com.syqu.shop.model.Product;
 import com.syqu.shop.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,16 +14,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 @Controller
 public class CartController {
     private static final Logger logger = LoggerFactory.getLogger(CartController.class);
     private final ShoppingCartService shoppingCartService;
     private final ProductService productService;
+    private PedidosSapatosService pedidosSapatosService;
 
     @Autowired
-    public CartController(ShoppingCartService shoppingCartService, ProductService productService) {
+    private PedidosSapatosRepository pedidosSapatosRepository;
+    @Autowired
+    public CartController(ShoppingCartService shoppingCartService, ProductService productService,  PedidosSapatosService pedidosSapatosService) {
         this.shoppingCartService = shoppingCartService;
         this.productService = productService;
+        this.pedidosSapatosService = pedidosSapatosService;
     }
 
     @GetMapping("/cart")
@@ -61,8 +71,12 @@ public class CartController {
 
     @GetMapping("/cart/checkout")
     public String cartCheckout(){
-        shoppingCartService.cartCheckout();
+        Set<Product> list = new HashSet<>();
+        list = shoppingCartService.productsInCart().keySet();
+        pedidosSapatosService.createPedidosSapatos( list);
+
 
         return "redirect:/cart";
     }
+
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pedidos de Sapatos</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>Pedidos de Sapatos</h1>
+<table>
+    <tr>
+        <th>ID</th>
+
+        <th>Sapato</th>
+    </tr>
+    <tr th:each="pedidoSapatos : ${pedidosSapatos}">
+        <td th:text="${pedidoSapatos.id}"></td>
+
+        <td>
+            <table>
+                <tr th:each="sapato : ${pedidoSapatos.sapatos}">
+                    <td th:text="${sapato.nome}"></td>
+                    <td th:text="${sapato.tamanho}"></td>
+                    <td th:text="${sapato.cor}"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

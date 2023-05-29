@@ -1,6 +1,7 @@
 package com.syqu.shop.service.impl;
 
-import com.syqu.shop.domain.Product;
+import com.syqu.shop.model.PedidosSapatos;
+import com.syqu.shop.model.Product;
 import com.syqu.shop.service.ShoppingCartService;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -9,9 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /*
 Thanks to Dusan!
@@ -54,6 +53,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return Collections.unmodifiableMap(cart);
     }
 
+
+
     @Override
     public BigDecimal totalPrice() {
         return cart.entrySet().stream()
@@ -61,6 +62,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                 .reduce(BigDecimal::add)
                 .orElse(BigDecimal.ZERO);
     }
+
 
     @Override
     public void cartCheckout() {

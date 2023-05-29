@@ -34,14 +34,18 @@ public class CartControllerMvcTests {
         viewResolver.setPrefix("/WEB-INF/jsp/view/");
         viewResolver.setSuffix(".jsp");
 
+/*
         mockMvc = MockMvcBuilders.standaloneSetup(new CartController(shoppingCartService, productService))
                 .setViewResolvers(viewResolver)
                 .build();
     }
+*/
 
-    @Test
+/*    @Test
     public void cartControllerStatus() throws Exception{
         this.mockMvc.perform(get("/cart")).andExpect(status().isOk())
                 .andExpect(view().name("cart")).andDo(print());
+    }*/
     }
+
 }

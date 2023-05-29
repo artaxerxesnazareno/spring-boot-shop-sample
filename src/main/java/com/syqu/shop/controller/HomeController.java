@@ -1,6 +1,6 @@
 package com.syqu.shop.controller;
 
-import com.syqu.shop.domain.Product;
+import com.syqu.shop.model.Product;
 import com.syqu.shop.service.CategoryService;
 import com.syqu.shop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,10 +31,17 @@ public class HomeController {
         model.addAttribute("categories", categoryService.findAll());
         return "home";
     }
+    @GetMapping(value = {"/dashbord"})
+    public String dashbord(Model model){
+        model.addAttribute("products", getAllProducts());
+        model.addAttribute("productsCount", productsCount());
+        model.addAttribute("categories", categoryService.findAll());
+        return "dashboard/dashboard";
+    }
 
     @RequestMapping("/searchByCategory")
     public String homePost(@RequestParam("categoryId") long categoryId, Model model){
-        model.addAttribute("books", productService.findAllByCategoryId(categoryId));
+//        model.addAttribute("books", productService.findAllByCategoryId(categoryId));
         model.addAttribute("booksCount", productService.count());
         model.addAttribute("categories", categoryService.findAll());
         return "home";

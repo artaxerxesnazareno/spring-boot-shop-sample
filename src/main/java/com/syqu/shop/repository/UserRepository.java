@@ -1,6 +1,6 @@
 package com.syqu.shop.repository;
 
-import com.syqu.shop.domain.User;
+import com.syqu.shop.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

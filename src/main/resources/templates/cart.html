@@ -1,44 +1,55 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
 
 <head th:replace="fragments/header :: header-css">
+    <title>Carinho</title>
+    <link rel="stylesheet" href="https://maxcdn.com/bootstrap/4.com/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare. incom/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-
 <div th:replace="fragments/header :: header"></div>
 
 <div class="container">
-    <div th:if="${!products.isEmpty()}" class="col-3">
-        <h2 th:text="#{cart.title}"></h2>
-        <div class="card" th:each="product : ${products.entrySet()}">
-            <h3 th:text="${product.getKey().getName()}"></h3>
-            <h4 th:text="${product.getValue()}"></h4>
-            <h4 th:text="${product.getKey().getPrice()}"></h4>
-            <a th:href="@{'/cart/remove/{id}'(id=${product.getKey().getId()})}" class="col-md-1">
-                <button type="button" class="btn btn-primary" th:text="#{cart.remove}"></button>
-            </a>
-            <br>
+    <div th:if="${!products.isEmpty()}" class="row d-flex justify-content-center">
+        <div class="col-md-3">
+            <h2 th:text="#{cart.title}"></h2>
+        </div>
+        <div class="col-md-9">
+            <div class="card" th:each="product : ${products.entrySet()}">
+                <div class="card-body">
+                    <h3 th:text="${product.getKey().getName()}"></h3>
+                    <h4 th:text="${product.getValue()}"></h4>
+                    <h4 th:text="${product.getKey().getPrice()}"></h4>
+
+                    <a th:href="@{'/cart/remove/{id}'(id=${product.getKey().getId()})}" class="btn btn-primary mb-2">
+                        <button type="button">Remover</button>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div th:if="${products.isEmpty()}" class="col-3">
-        <h2 th:text="#{cart.empty}"></h2>
+    <div th:if="${products.isEmpty()}" class="col-md-3">
+        <h2 th:text="#{cart.IsetEmpty}"></h2>
     </div>
 
     <br>
-    <a th:href="@{'/cart/clear/'}" class="col-md-1">
-        <button type="button" class="btn btn-info" th:text="#{cart.clear}"></button>
+    <a th:href="@{'/cart/clear/'}" class="btn btn-info mb-3">
+        <button type="button">Limpar Carrinho</button>
     </a>
 
     <br>
     <div class="row">
-        <h3 th:text="#{cart.total} + ' ' + ${totalPrice}"></h3>">
-        <span th:text="#{cart.total} + ' ' + ${productsCount}"></span>
-
-        <a th:href="@{'/cart/checkout'}" class="col-md-1">
-            <button type="button" class="btn btn-success" th:text="#{cart.checkout}"></button>
-        </a>
+        <div class="col-md-3">
+            <h3 th:text="#{cart.total} + ' ' + ${totalPrice}"></h3>
+            <span th:text="#{cart.total} + ' ' + ${productsCount}"></span>
+        </div>
+        <div class="col-md-9">
+            <a th:href="@{'/cart/checkout'}" class="btn btn-success">
+                <button type="button">Finalizar Compra</button>
+            </a>
+        </div>
     </div>
 </div>
 
