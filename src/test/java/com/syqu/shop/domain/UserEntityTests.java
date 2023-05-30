@@ -1,7 +1,6 @@
-package com.syqu.shop.model;
+package com.syqu.shop.domain;
 
 import com.syqu.shop.creator.UserCreator;
-import com.syqu.shop.domain.User;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;

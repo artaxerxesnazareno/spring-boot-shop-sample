@@ -1,5 +1,6 @@
 package com.syqu.shop.service.impl;
 
+
 import com.syqu.shop.domain.Product;
 import com.syqu.shop.repository.ProductRepository;
 import com.syqu.shop.service.ProductService;
@@ -19,18 +20,21 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void save(Product product) {
+
         productRepository.save(product);
     }
 
     @Override
     public void edit(long id, Product newProduct) {
-        Product found = productRepository.getOne(id);
+        Product found = productRepository.findById(id);
         found.setName(newProduct.getName());
         found.setImageUrl(newProduct.getImageUrl());
         found.setDescription(newProduct.getDescription());
         found.setPrice(newProduct.getPrice());
-        save(newProduct);
+
+        productRepository.save(found);
     }
+
 
     @Override
     public void delete(long id) {

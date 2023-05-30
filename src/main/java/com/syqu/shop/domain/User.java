@@ -13,6 +13,9 @@ import java.math.BigDecimal;
 @Table(name = "user")
 public class User {
 
+    @OneToOne(mappedBy = "user")
+    private Pedidos pedidos;
+
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

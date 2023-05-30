@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header-css">
+  <meta charset="UTF-8">
+  <title>Pedidos de Sapatos</title>
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: header"/>
+<div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
+  <div class="card text-center" style="width: 80%; background-color: #f8f9fa; border-color: #dee2e6; border-width: 1px; border-style: solid; border-color: #dee2e6;">
+    <div class="card-header">
+      <h5 class="mb-0">Checkout realizado com sucesso</h5>
+      <a th:href="@{/}" class="btn btn-success">Voltar</a>
+    </div>
+    <div class="card-body" style=" background-color: #95da95; ">
+      <p>Seu pedido foi enviado com sucesso! Agradecemos sua compra e esperamos que você seja satisfeito com a qualidade dos produtos adquiridos.</p>
+    </div>
+  </div>
+</div>
+
+  <button class="btn btn-primary mt-5" type="button">Retornar à loja</button>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

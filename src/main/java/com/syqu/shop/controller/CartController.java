@@ -1,5 +1,6 @@
 package com.syqu.shop.controller;
 
+import com.syqu.shop.service.PedidosService;
 import com.syqu.shop.service.ShoppingCartService;
 import com.syqu.shop.domain.Product;
 import com.syqu.shop.service.ProductService;
@@ -11,11 +12,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Controller
 public class CartController {
     private static final Logger logger = LoggerFactory.getLogger(CartController.class);
     private final ShoppingCartService shoppingCartService;
     private final ProductService productService;
+    @Autowired
+    private PedidosService pedidosService;
 
     @Autowired
     public CartController(ShoppingCartService shoppingCartService, ProductService productService) {
@@ -24,7 +30,7 @@ public class CartController {
     }
 
     @GetMapping("/cart")
-    public String cart(Model model){
+    public String cart(Model model) {
         model.addAttribute("products", shoppingCartService.productsInCart());
         model.addAttribute("productsCount", shoppingCartService.productsInCart().size());
         model.addAttribute("totalPrice", shoppingCartService.totalPrice());
@@ -33,9 +39,9 @@ public class CartController {
     }
 
     @GetMapping("/cart/add/{id}")
-    public String addProductToCart(@PathVariable("id") long id){
+    public String addProductToCart(@PathVariable("id") long id) {
         Product product = productService.findById(id);
-        if (product != null){
+        if (product != null) {
             shoppingCartService.addProduct(product);
             logger.debug(String.format("Product with id: %s added to shopping cart.", id));
         }
@@ -43,9 +49,9 @@ public class CartController {
     }
 
     @GetMapping("/cart/remove/{id}")
-    public String removeProductFromCart(@PathVariable("id") long id){
+    public String removeProductFromCart(@PathVariable("id") long id) {
         Product product = productService.findById(id);
-        if (product != null){
+        if (product != null) {
             shoppingCartService.removeProduct(product);
             logger.debug(String.format("Product with id: %s removed from shopping cart.", id));
         }
@@ -53,16 +59,19 @@ public class CartController {
     }
 
     @GetMapping("/cart/clear")
-    public String clearProductsInCart(){
+    public String clearProductsInCart() {
         shoppingCartService.clearProducts();
 
         return "redirect:/cart";
     }
 
     @GetMapping("/cart/checkout")
-    public String cartCheckout(){
-        shoppingCartService.cartCheckout();
+    public String cartCheckout() {
+        Set<Product> list = new HashSet<Product>();
+        list = shoppingCartService.productsInCart().keySet();
+        pedidosService.createPedidosSapatos(list);
 
-        return "redirect:/cart";
+        shoppingCartService.cartCheckout();
+        return "confirm_checkout";
     }
 }

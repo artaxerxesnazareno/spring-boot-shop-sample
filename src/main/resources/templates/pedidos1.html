@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header-css">
+    <meta charset="UTF-8">
+    <title>Pedidos de Sapatos</title>
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+    <h1>Pedidos</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Descrição</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pedido: ${pedidos}" th:id="${pedido.id}">
+            <td th:text="${pedido.id}"></td>
+            <td>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p>Nome:</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p th:text="${pedido.pedidoProducts.product.name}"></p>
+                    </div>
+                </div>
+            </td>
+            <td th:text="${pedido.pedidoProducts.product.price}"></td>
+            <td th:text="${pedido.pedidoProducts.product.description}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
