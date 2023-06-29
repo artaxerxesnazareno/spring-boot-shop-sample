@@ -27,7 +27,7 @@
     <!-- ============================================================== -->
     <!-- Topbar header - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div th:replace="dashboard/fragments/header :: header">
+    <head th:replace="dashboard/fragments/header :: header">
 
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
@@ -43,28 +43,38 @@
                     <tr>
                         <th scope="col">ID do Pedido</th>
                         <th scope="col">Produtos</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Tamanho</th>
+                        <th scope="col">Cor</th>
+                        <th scope="col">Preço</th>
+
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="pedido : ${pedidosSapatosList}" >
-                        <td th:text="${pedido.id}"></td>
-                        <td>
-                            <ul class="list-inline">
-                                <li th:each="product : ${pedido.products}" th:text="${product.name}"></li>
-                            </ul>
-                        </td>
-                    </tr>
+                        <div th:each="pedido : ${pedidosSapatosList}">
+                           
+                            <tr th:each="pedidoProduct : ${pedido.pedidoProducts}">
+                                <td th:text="${pedidoProduct.id}"></td>
+                                <td th:text="${pedidoProduct.product.name}"></td>
+                                <td th:text="${pedidoProduct.product.marca}"></td>
+                                <td th:text="${pedidoProduct.product.tamanho}"></td>
+                                <td th:text="${pedidoProduct.product.cor}"></td>
+                                <td th:text="${pedidoProduct.product.price}"></td>
+                            </tr>
+                         
+                        </div>
+                        
                     </tbody>
                 </table>
             </div>
 
         </div>
 
-            <div th:replace="dashboard/fragments/footer :: footer"></div>
+          
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
-        </div>
+        </head>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->

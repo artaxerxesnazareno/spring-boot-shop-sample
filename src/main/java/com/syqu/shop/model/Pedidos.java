@@ -5,7 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.UUID;
 
 @Getter
@@ -22,7 +23,7 @@ public class Pedidos {
     private User user;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<PedidoProduct> pedidoProducts = new HashSet<>();
+    private List<PedidoProduct> pedidoProducts = new ArrayList<>();
 
 
 

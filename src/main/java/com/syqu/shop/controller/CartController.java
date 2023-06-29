@@ -82,6 +82,6 @@ public class CartController {
         pedidosService.createPedidosSapatos(list, user);
 
         shoppingCartService.cartCheckout();
-        return "redirect:/";
+        return "checkout";
     }
 }

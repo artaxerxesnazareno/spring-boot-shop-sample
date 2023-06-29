@@ -25,7 +25,7 @@ public class PedidosSapatosController {
 
     @GetMapping("/pedidos/{id}")
     public String getPedidosSapatosById(@PathVariable UUID id, Model model) {
-        Set<Product> pedidosSapatos = pedidosSapatosService.findSapatosById(id);
+        List <Product> pedidosSapatos = pedidosSapatosService.findSapatosById(id);
 
 
 

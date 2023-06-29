@@ -9,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -29,7 +29,7 @@ public class Product {
     private UUID pedidosSapatosId;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<PedidoProduct> pedidoProducts;
+    private List <PedidoProduct> pedidoProducts;
 
 
 
