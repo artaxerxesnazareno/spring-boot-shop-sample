@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PedidosSapatosServiceTest {
     @MockBean
-    private PedidosSapatosService pedidosSapatosService;
+    private PedidosService pedidosService;
 
     @MockBean
     private ProductService productService;

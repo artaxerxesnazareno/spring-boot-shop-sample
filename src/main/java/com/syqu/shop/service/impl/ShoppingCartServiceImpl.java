@@ -1,6 +1,6 @@
 package com.syqu.shop.service.impl;
 
-import com.syqu.shop.model.PedidosSapatos;
+import com.syqu.shop.model.Pedidos;
 import com.syqu.shop.model.Product;
 import com.syqu.shop.service.ShoppingCartService;
 import org.springframework.context.annotation.Scope;

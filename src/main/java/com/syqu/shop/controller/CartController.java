@@ -1,8 +1,7 @@
 package com.syqu.shop.controller;
 
-import com.syqu.shop.model.PedidosSapatos;
-import com.syqu.shop.repository.PedidosSapatosRepository;
-import com.syqu.shop.service.PedidosSapatosService;
+import com.syqu.shop.model.PedidoProduct;
+import com.syqu.shop.service.PedidosService;
 import com.syqu.shop.service.ShoppingCartService;
 import com.syqu.shop.model.Product;
 import com.syqu.shop.service.ProductService;
@@ -13,24 +12,29 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.*;
-import java.util.stream.Collectors;
+import com.syqu.shop.service.UserService;
+import java.security.Principal;
+import com.syqu.shop.model.User;
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 public class CartController {
     private static final Logger logger = LoggerFactory.getLogger(CartController.class);
-    private final ShoppingCartService shoppingCartService;
-    private final ProductService productService;
-    private PedidosSapatosService pedidosSapatosService;
 
     @Autowired
-    private PedidosSapatosRepository pedidosSapatosRepository;
+    private  ShoppingCartService shoppingCartService;
+    private final ProductService productService;
     @Autowired
-    public CartController(ShoppingCartService shoppingCartService, ProductService productService,  PedidosSapatosService pedidosSapatosService) {
-        this.shoppingCartService = shoppingCartService;
+    private PedidosService pedidosService;
+
+     @Autowired
+    private  UserService userService;
+
+    @Autowired
+    public CartController(ProductService productService) {
+
         this.productService = productService;
-        this.pedidosSapatosService = pedidosSapatosService;
     }
 
     @GetMapping("/cart")
@@ -70,13 +74,14 @@ public class CartController {
     }
 
     @GetMapping("/cart/checkout")
-    public String cartCheckout(){
-        Set<Product> list = new HashSet<>();
+    public String cartCheckout(Principal principal) {
+       User user = userService.findByUsername(principal.getName());
+
+        Set<Product> list = new HashSet<Product>();
         list = shoppingCartService.productsInCart().keySet();
-        pedidosSapatosService.createPedidosSapatos( list);
+        pedidosService.createPedidosSapatos(list, user);
 
-
-        return "redirect:/cart";
+        shoppingCartService.cartCheckout();
+        return "redirect:/";
     }
-
 }

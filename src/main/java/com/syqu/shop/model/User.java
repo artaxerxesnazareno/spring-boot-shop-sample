@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 public class User {
 
     @OneToOne(mappedBy = "user")
-    private PedidosSapatos pedidosSapatos;
+    private Pedidos pedidos;
 
     @Column(name = "id")
     @Id

@@ -1,6 +1,5 @@
 package com.syqu.shop.model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
@@ -9,7 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -30,9 +28,9 @@ public class Product {
     @Column(name = "pedidos_sapatos_id")
     private UUID pedidosSapatosId;
 
-    @ManyToMany
-    @JoinColumn(name = "pedidos_sapatos_product")
-    private Set<PedidosSapatos> pedidosSapatos;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<PedidoProduct> pedidoProducts;
+
 
 
     @Transient
@@ -43,8 +41,7 @@ public class Product {
     @NotNull
     @NotEmpty
     private String name;
-
-    @Column(name = "marca")
+ @Column(name = "marca")
     private String marca;
 
     @Column(name = "tamanho")
@@ -52,6 +49,7 @@ public class Product {
 
     @Column(name = "cor")
     private String cor;
+
 
 
     @Column(name = "description",length = 2000)
@@ -66,6 +64,9 @@ public class Product {
     @NotNull
     private BigDecimal price;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = true)
+    private Category category;
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

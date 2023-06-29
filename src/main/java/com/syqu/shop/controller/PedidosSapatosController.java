@@ -1,8 +1,8 @@
 package com.syqu.shop.controller;
 
-import com.syqu.shop.model.PedidosSapatos;
+import com.syqu.shop.model.Pedidos;
 import com.syqu.shop.model.Product;
-import com.syqu.shop.service.PedidosSapatosService;
+import com.syqu.shop.service.PedidosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,14 +19,13 @@ import java.util.stream.Collectors;
 public class PedidosSapatosController {
 
     @Autowired
-    private PedidosSapatosService pedidosSapatosService;
+    private PedidosService pedidosSapatosService;
 
 
 
     @GetMapping("/pedidos/{id}")
     public String getPedidosSapatosById(@PathVariable UUID id, Model model) {
-        Set<Product> pedidosSapatos = pedidosSapatosService
-                .findSapatosById(id);
+        Set<Product> pedidosSapatos = pedidosSapatosService.findSapatosById(id);
 
 
 
@@ -35,7 +34,7 @@ public class PedidosSapatosController {
     }
     @GetMapping("/pedidos")
     public String getAllPedidosSapatos1(Model model) {
-        List<PedidosSapatos> pedidosSapatosList = pedidosSapatosService.findAllPedidosSapatos();
+        List<Pedidos> pedidosSapatosList = pedidosSapatosService.findAllPedidos();
         model.addAttribute("pedidosSapatosList", pedidosSapatosList);
         System.out.println(pedidosSapatosList);
         return "dashboard/pedidos";
