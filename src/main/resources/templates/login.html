@@ -4,41 +4,54 @@
 <head th:replace="fragments/header :: header-css">
 </head>
 
-<body>
+<body style="background-color:#37bbe3;">
     <div th:replace="fragments/header :: header"></div>
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-                <form autocomplete="off" th:action="@{/login}" class="form-signin" method="POST">
-                    <div th:if="${param.logout}">
-                        <div class="alert alert-info" th:text="#{login.alert.logged_out}"></div>
-                    </div>
-                    <fieldset>
-                        <h1 th:text="#{login.sign_in}"></h1>
-                        <label th:text="#{user.username}"></label>
-                        <div class="form-group">
-                            <input type="text" name="username" class="form-control input-lg" placeholder="" required="true" autofocus="true"/>
-                        </div>
-                        <label th:text="#{user.password}"></label>
-                        <div class="form-group">
-                            <input type="password" name="password" class="form-control input-lg" placeholder="" required="true" />
-                        </div>
-                        <div th:if="${param.error}">
-                            <div class="alert alert-danger" th:text="*{error}"></div>
-                        </div>
-                        <span th:text="#{login.no_account}"></span>
-                        <span>
-                            <a th:href="@{/register}" th:text="#{register.button}"></a>
-                        </span>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <input type="submit" name="login-sumbit" id="login-sumbit" class="btn btn-lg btn-primary btn-block" th:value="#{user.log_in}" />
+        <section class="h-100" >
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-xl-10">
+                        <div class="card rounded-3 text-black">
+
+                                <div >
+                                    <div class="card-body p-md-5 mx-md-4">
+                                        <div class="text-center">
+                                            <h4 class="mt-1 mb-5 pb-1" style="color: #F1C40F;">Login</h4>
+                                        </div>
+                                        <form th:action="@{/login}" class="form-signin" method="POST">
+                                            <div th:if="${param.logout}">
+                                                <div class="alert alert-info" th:text="#{login.alert.logged_out}"></div>
+                                            </div>
+                                            <p th:text="#{user.username}" style="color: #F1C40F;"></p>
+                                            <div class="form-outline mb-4">
+                                                <input type="text" name="username" class="form-control" placeholder="" required="true" autofocus="true" />
+                                            </div>
+                                            <p th:text="#{user.password}" style="color: #F1C40F;"></p>
+                                            <div class="form-outline mb-4">
+                                                <input type="password" name="password" class="form-control" placeholder="" required="true" />
+                                            </div>
+                                            <div th:if="${param.error}">
+                                                <div class="alert alert-danger" th:text="*{error}"></div>
+                                            </div>
+                                            <span th:text="#{login.no_account}" style="color: #F1C40F;"></span>
+                                            <span>
+                                        <a th:href="@{/register}" th:text="#{register.button}" style="color: #F1C40F;"></a>
+                                    </span>
+                                            <div class="text-center pt-1 mb-5 pb-1">
+                                                <input type="submit" name="login-sumbit" id="login-sumbit" class="btn btn-primary btn-block fa-lg" style="background-color: #F1C40F; border-color: #F1C40F;" th:value="#{user.log_in}" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+
                             </div>
-                        </div>
-                    </fieldset>
-                </form>
+
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
     </div>
     <div th:replace="fragments/footer :: footer"></div>
 </body>

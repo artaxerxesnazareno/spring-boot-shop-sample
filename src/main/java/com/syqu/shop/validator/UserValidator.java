@@ -1,6 +1,6 @@
 package com.syqu.shop.validator;
 
-import com.syqu.shop.domain.User;
+import com.syqu.shop.model.User;
 import com.syqu.shop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

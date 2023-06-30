@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<<<<<<< HEAD
 <head>
     <title>Zay Shop - Product Detail Page</title>
     <meta charset="utf-8">
@@ -87,11 +88,45 @@
 
                                 <div class="col d-grid">
                                     <a  th:href="${'/cart/add/' + product.getId()}" class="btn btn-success btn-lg text-white" th:text="#{product.add}">
+=======
+<head th:replace="fragments/header :: header-css">
+</head>
+
+<body style="background-color:#e3b337;">
+
+<div th:replace="fragments/header :: header"></div>
+
+<!-- Open Content -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 mb-4">
+                <div class="card border-0 shadow">
+                    <img class="card-img-top img-fluid" th:alt="${product.name}" th:src="@{/images/{filename}(filename=${product.imageUrl})}" id="product-detail">
+                </div>
+            </div>
+            <!-- col end -->
+            <div class="col-lg-7">
+                <div class="card border-0 shadow">
+                    <div class="card-body">
+                        <h1 class="h2 mb-3" th:text="${product.name}"></h1>
+                        <p class="h3 py-2 mb-4" style="color: #8C8C8C;"><span th:text="${product.price}"> </span> KZ</p>
+                        <h6 class="mb-2">Descrição:</h6>
+                        <p class="mb-4"><span th:text="${product.description}"></span></p>
+                        <form action="" method="GET">
+                            <input type="hidden" name="product-title" value="Activewear">
+                            <div class="row">
+                                <div class="col d-grid">
+                                    <a th:href="${'/cart/add/' + product.getId()}" class="btn btn-lg text-white" th:text="#{product.add}" style="background-color: #e3b337;">
+>>>>>>> aaf5c88875e0e2592216b0a48740ce82bc83ae30
                                     </a>
                                 </div>
                             </div>
                         </form>
+<<<<<<< HEAD
 
+=======
+>>>>>>> aaf5c88875e0e2592216b0a48740ce82bc83ae30
                     </div>
                 </div>
             </div>
@@ -100,6 +135,7 @@
 </section>
 <!-- Close Content -->
 
+<<<<<<< HEAD
 <!-- Start Article -->
 <section class="py-5">
     <div class="container">
@@ -184,3 +220,13 @@
 
 </body>
 </html>
+=======
+<!-- End Article -->
+
+<!-- Start Footer -->
+<div th:replace="fragments/footer :: footer"></div>
+
+<!-- End Slider Script -->
+</body>
+</html>
+>>>>>>> aaf5c88875e0e2592216b0a48740ce82bc83ae30

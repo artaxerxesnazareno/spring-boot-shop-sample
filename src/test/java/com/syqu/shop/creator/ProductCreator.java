@@ -1,6 +1,6 @@
 package com.syqu.shop.creator;
 
-import com.syqu.shop.domain.Product;
+import com.syqu.shop.model.Product;
 
 import java.math.BigDecimal;
 import java.util.HashSet;

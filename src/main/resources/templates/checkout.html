@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+>
+  <head th:replace="fragments/header :: header-css">
+    <!-- site metas -->
+    <title>Fashion</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+  </head>
+
+  <body>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Compra Realizada!</h5>
+          <p class="card-text">Sua compra foi realizada com sucesso!</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <a th:href="@{/home}" class="btn btn-primary">Voltar para a página inicial</a>
+      </div>
+    </div>
+  </body>
+</html>

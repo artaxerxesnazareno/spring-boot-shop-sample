@@ -1,7 +1,7 @@
 package com.syqu.shop.service.impl;
 
 import com.syqu.shop.service.UserService;
-import com.syqu.shop.domain.User;
+import com.syqu.shop.model.User;
 import com.syqu.shop.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,5 +63,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(long id) {
         return userRepository.findById(id);
+    }
+
+    public long conutAllUser(){
+        return userRepository.count();
     }
 }

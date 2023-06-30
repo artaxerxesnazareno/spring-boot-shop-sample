@@ -1,6 +1,6 @@
 package com.syqu.shop.controller;
 
-import com.syqu.shop.domain.User;
+import com.syqu.shop.model.User;
 import com.syqu.shop.service.UserService;
 import com.syqu.shop.validator.UserValidator;
 import org.slf4j.Logger;

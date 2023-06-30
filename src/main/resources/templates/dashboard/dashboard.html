@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+
+
+<head th:replace="dashboard/fragments/header :: header-css">
+</head>
+
+<body>
+
+
+<!-- ============================================================== -->
+<!-- Preloader - style you can find in spinners.css -->
+<!-- ============================================================== -->
+<div class="preloader" style="display: none;">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+     data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <head th:replace="dashboard/fragments/header :: header">
+
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row align-items-center">
+                    <div class="col-5">
+                        <h4 class="page-title">Dashboard</h4>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Sales chart -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">Sales Summary</h4>
+                                        <h5 class="card-subtitle">Overview of Latest Month</h5>
+                                    </div>
+                                    <div class="ms-auto d-flex no-block align-items-center">
+                                        <ul class="list-inline font-12 dl m-r-15 m-b-0">
+                                            <li class="list-inline-item text-info"><i class="fa fa-circle"></i> Iphone
+                                            </li>
+                                            <li class="list-inline-item text-primary"><i class="fa fa-circle"></i> Ipad
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- column -->
+                                    <div class="col-lg-12">
+                                        <div class="campaign ct-charts">
+                                            <div class="chartist-tooltip" style="top: 184.625px; left: 682px;"></div>
+                                            <svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%"
+                                                 height="100%" class="ct-chart-line" style="width: 100%; height: 100%;">
+                                                <g class="ct-grids">
+                                                    <line x1="30" x2="30" y1="15" y2="215"
+                                                          class="ct-grid ct-horizontal"></line>
+                                                    <line x1="125.09375" x2="125.09375" y1="15" y2="215"
+                                                          class="ct-grid ct-horizontal"></line>
+                                                    <line x1="220.1875" x2="220.1875" y1="15" y2="215"
+                                                          class="ct-grid ct-horizontal"></line>
+                                                    <line x1="315.28125" x2="315.28125" y1="15" y2="215"
+                                                          class="ct-grid ct-horizontal"></line>
+                                                    <line x1="410.375" x2="410.375" y1="15" y2="215"
+                                                          class="ct-grid ct-horizontal"></line>
+                                                    <line x1="505.46875" x2="505.46875" y1="15" y2="215"
+                                                          class="ct-grid ct-horizontal"></line>
+                                                    <line x1="600.5625" x2="600.5625" y1="15" y2="215"
+                                                          class="ct-grid ct-horizontal"></line>
+                                                    <line x1="695.65625" x2="695.65625" y1="15" y2="215"
+                                                          class="ct-grid ct-horizontal"></line>
+                                                    <line y1="215" y2="215" x1="30" x2="695.65625"
+                                                          class="ct-grid ct-vertical"></line>
+                                                    <line y1="148.33333333333331" y2="148.33333333333331" x1="30"
+                                                          x2="695.65625" class="ct-grid ct-vertical"></line>
+                                                    <line y1="81.66666666666666" y2="81.66666666666666" x1="30"
+                                                          x2="695.65625" class="ct-grid ct-vertical"></line>
+                                                    <line y1="15" y2="15" x1="30" x2="695.65625"
+                                                          class="ct-grid ct-vertical"></line>
+                                                </g>
+                                                <g>
+                                                    <g class="ct-series ct-series-a">
+                                                        <path d="M30,215L30,215C61.698,203.889,93.396,185.37,125.094,181.667C156.792,177.963,188.49,177.963,220.188,175C251.885,172.037,283.583,169.62,315.281,161.667C346.979,153.713,378.677,48.333,410.375,48.333C442.073,48.333,473.771,150.817,505.469,155C537.167,159.183,568.865,161.667,600.563,161.667C632.26,161.667,663.958,90.556,695.656,55L695.656,215Z"
+                                                              class="ct-area" x1="NaN"></path>
+                                                        <path d="M30,215C61.698,203.889,93.396,185.37,125.094,181.667C156.792,177.963,188.49,177.963,220.188,175C251.885,172.037,283.583,169.62,315.281,161.667C346.979,153.713,378.677,48.333,410.375,48.333C442.073,48.333,473.771,150.817,505.469,155C537.167,159.183,568.865,161.667,600.563,161.667C632.26,161.667,663.958,90.556,695.656,55"
+                                                              class="ct-line"></path>
+                                                        <line x1="30" y1="215" x2="30.01" y2="215" class="ct-point"
+                                                              ct:value="0"></line>
+                                                        <line x1="125.09375" y1="181.66666666666666" x2="125.10375"
+                                                              y2="181.66666666666666" class="ct-point"
+                                                              ct:value="5"></line>
+                                                        <line x1="220.1875" y1="175" x2="220.1975" y2="175"
+                                                              class="ct-point" ct:value="6"></line>
+                                                        <line x1="315.28125" y1="161.66666666666666" x2="315.29125"
+                                                              y2="161.66666666666666" class="ct-point"
+                                                              ct:value="8"></line>
+                                                        <line x1="410.375" y1="48.33333333333334" x2="410.385"
+                                                              y2="48.33333333333334" class="ct-point"
+                                                              ct:value="25"></line>
+                                                        <line x1="505.46875" y1="155" x2="505.47875" y2="155"
+                                                              class="ct-point" ct:value="9"></line>
+                                                        <line x1="600.5625" y1="161.66666666666666" x2="600.5725"
+                                                              y2="161.66666666666666" class="ct-point"
+                                                              ct:value="8"></line>
+                                                        <line x1="695.65625" y1="55" x2="695.66625" y2="55"
+                                                              class="ct-point" ct:value="24"></line>
+                                                    </g>
+                                                    <g class="ct-series ct-series-b">
+                                                        <path d="M30,215L30,215C61.698,208.333,93.396,195,125.094,195C156.792,195,188.49,208.333,220.188,208.333C251.885,208.333,283.583,205.476,315.281,201.667C346.979,197.857,378.677,161.667,410.375,161.667C442.073,161.667,473.771,208.333,505.469,208.333C537.167,208.333,568.865,181.667,600.563,181.667C632.26,181.667,663.958,199.444,695.656,208.333L695.656,215Z"
+                                                              class="ct-area" x1="NaN"></path>
+                                                        <path d="M30,215C61.698,208.333,93.396,195,125.094,195C156.792,195,188.49,208.333,220.188,208.333C251.885,208.333,283.583,205.476,315.281,201.667C346.979,197.857,378.677,161.667,410.375,161.667C442.073,161.667,473.771,208.333,505.469,208.333C537.167,208.333,568.865,181.667,600.563,181.667C632.26,181.667,663.958,199.444,695.656,208.333"
+                                                              class="ct-line"></path>
+                                                        <line x1="30" y1="215" x2="30.01" y2="215" class="ct-point"
+                                                              ct:value="0"></line>
+                                                        <line x1="125.09375" y1="195" x2="125.10375" y2="195"
+                                                              class="ct-point" ct:value="3"></line>
+                                                        <line x1="220.1875" y1="208.33333333333334" x2="220.1975"
+                                                              y2="208.33333333333334" class="ct-point"
+                                                              ct:value="1"></line>
+                                                        <line x1="315.28125" y1="201.66666666666666" x2="315.29125"
+                                                              y2="201.66666666666666" class="ct-point"
+                                                              ct:value="2"></line>
+                                                        <line x1="410.375" y1="161.66666666666666" x2="410.385"
+                                                              y2="161.66666666666666" class="ct-point"
+                                                              ct:value="8"></line>
+                                                        <line x1="505.46875" y1="208.33333333333334" x2="505.47875"
+                                                              y2="208.33333333333334" class="ct-point"
+                                                              ct:value="1"></line>
+                                                        <line x1="600.5625" y1="181.66666666666666" x2="600.5725"
+                                                              y2="181.66666666666666" class="ct-point"
+                                                              ct:value="5"></line>
+                                                        <line x1="695.65625" y1="208.33333333333334" x2="695.66625"
+                                                              y2="208.33333333333334" class="ct-point"
+                                                              ct:value="1"></line>
+                                                    </g>
+                                                </g>
+                                                <g class="ct-labels">
+                                                    <foreignObject style="overflow: visible;" x="30" y="220"
+                                                                   width="95.09375" height="20"><span
+                                                            class="ct-label ct-horizontal ct-end"
+                                                            xmlns="http://www.w3.org/2000/xmlns/"
+                                                            style="width: 95px; height: 20px;">1</span></foreignObject>
+                                                    <foreignObject style="overflow: visible;" x="125.09375" y="220"
+                                                                   width="95.09375" height="20"><span
+                                                            class="ct-label ct-horizontal ct-end"
+                                                            xmlns="http://www.w3.org/2000/xmlns/"
+                                                            style="width: 95px; height: 20px;">2</span></foreignObject>
+                                                    <foreignObject style="overflow: visible;" x="220.1875" y="220"
+                                                                   width="95.09375" height="20"><span
+                                                            class="ct-label ct-horizontal ct-end"
+                                                            xmlns="http://www.w3.org/2000/xmlns/"
+                                                            style="width: 95px; height: 20px;">3</span></foreignObject>
+                                                    <foreignObject style="overflow: visible;" x="315.28125" y="220"
+                                                                   width="95.09375" height="20"><span
+                                                            class="ct-label ct-horizontal ct-end"
+                                                            xmlns="http://www.w3.org/2000/xmlns/"
+                                                            style="width: 95px; height: 20px;">4</span></foreignObject>
+                                                    <foreignObject style="overflow: visible;" x="410.375" y="220"
+                                                                   width="95.09375" height="20"><span
+                                                            class="ct-label ct-horizontal ct-end"
+                                                            xmlns="http://www.w3.org/2000/xmlns/"
+                                                            style="width: 95px; height: 20px;">5</span></foreignObject>
+                                                    <foreignObject style="overflow: visible;" x="505.46875" y="220"
+                                                                   width="95.09375" height="20"><span
+                                                            class="ct-label ct-horizontal ct-end"
+                                                            xmlns="http://www.w3.org/2000/xmlns/"
+                                                            style="width: 95px; height: 20px;">6</span></foreignObject>
+                                                    <foreignObject style="overflow: visible;" x="600.5625" y="220"
+                                                                   width="95.09375" height="20"><span
+                                                            class="ct-label ct-horizontal ct-end"
+                                                            xmlns="http://www.w3.org/2000/xmlns/"
+                                                            style="width: 95px; height: 20px;">7</span></foreignObject>
+                                                    <foreignObject style="overflow: visible;" x="695.65625" y="220"
+                                                                   width="30" height="20"><span
+                                                            class="ct-label ct-horizontal ct-end"
+                                                            xmlns="http://www.w3.org/2000/xmlns/"
+                                                            style="width: 30px; height: 20px;">8</span></foreignObject>
+                                                    <foreignObject style="overflow: visible;" y="148.33333333333331"
+                                                                   x="10" height="66.66666666666667" width="10"><span
+                                                            class="ct-label ct-vertical ct-start"
+                                                            xmlns="http://www.w3.org/2000/xmlns/"
+                                                            style="height: 67px; width: 10px;">0k</span></foreignObject>
+                                                    <foreignObject style="overflow: visible;" y="81.66666666666664"
+                                                                   x="10" height="66.66666666666667" width="10"><span
+                                                            class="ct-label ct-vertical ct-start"
+                                                            xmlns="http://www.w3.org/2000/xmlns/"
+                                                            style="height: 67px; width: 10px;">10k</span>
+                                                    </foreignObject>
+                                                    <foreignObject style="overflow: visible;" y="15" x="10"
+                                                                   height="66.66666666666666" width="10"><span
+                                                            class="ct-label ct-vertical ct-start"
+                                                            xmlns="http://www.w3.org/2000/xmlns/"
+                                                            style="height: 67px; width: 10px;">20k</span>
+                                                    </foreignObject>
+                                                    <foreignObject style="overflow: visible;" y="-15" x="10" height="30"
+                                                                   width="10"><span
+                                                            class="ct-label ct-vertical ct-start"
+                                                            xmlns="http://www.w3.org/2000/xmlns/"
+                                                            style="height: 30px; width: 10px;">30k</span>
+                                                    </foreignObject>
+                                                </g>
+                                                <defs>
+                                                    <linearGradient id="gradient" x1="0" y1="1" x2="0" y2="0">
+                                                        <stop offset="0" stop-color="rgba(255, 255, 255, 1)"></stop>
+                                                        <stop offset="1" stop-color="rgba(64, 196, 255, 1)"></stop>
+                                                    </linearGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <!-- column -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Metricas</h4>
+                                <div class="feed-widget">
+                                    <ul class="list-style-none feed-body m-0 p-b-20">
+                                        <li class="feed-item">
+                                            <div class="feed-icon bg-info"><i class="fa fa-cubes"></i></div>
+                                            <span class="feed-title">Total de Produtos</span> <span class="ms-auto font-12 text-muted" th:text="${allProduct}">Just Now</span>
+                                        </li>
+                                        <li class="feed-item">
+                                            <div class="feed-icon bg-success"><i class="fas fa-users"></i></div>
+                                            <span class="feed-title">Total de Usuários</span><span class="ms-auto font-12 text-muted" th:text="${allUsers}">2 Hours ago</span>
+                                        </li>
+                                        <li class="feed-item">
+                                            <div class="feed-icon bg-warning"><i class="fas fa-shopping-cart"></i></div>
+                                            <span class="feed-title">Total de Pedidos</span><span class="ms-auto font-12 text-muted" th:text="${allPedidos}">31 May</span>
+                                        </li>
+                                        <li class="feed-item">
+                                            <div class="feed-icon bg-danger"><i class="fa fa-money"></i></div>
+                                            <span class="feed-title">Lucro</span><span class="ms-auto font-12 text-muted" th:text="${totalPedidosValor}">30 May</span>
+                                        </li>
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- Sales chart -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Table -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- title -->
+                                <div class="d-md-flex">
+                                    <div>
+                                        <h4 class="card-title">Produtos</h4>
+                                        <h5 class="card-subtitle">Listando sapatos cadastrados</h5>
+                                    </div>
+
+                                </div>
+                                <!-- title -->
+                            </div>
+                            <div class="table-responsive">
+
+                                <table class="table v-middle table-responsive">
+                                    <thead>
+                                    <tr class="bg-light">
+                                        <th class="border-top-0">Nome</th>
+                                        <th class="border-top-0">Marca</th>
+                                        <th class="border-top-0">Tamanho</th>
+                                        <th class="border-top-0">Cor</th>
+                                        <th class="border-top-0">Descrição</th>
+                                        <th class="border-top-0">Imagem</th>
+                                        <th class="border-top-0">Preço</th>
+                                        <th class="border-top-0">Ação</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="product : ${products}">
+                                        <td th:text="${product.name}"></td>
+                                        <td th:text="${product.marca}"></td>
+                                        <td th:text="${product.tamanho}"></td>
+                                        <td th:text="${product.cor}"></td>
+                                        <td th:text="${product.description}"></td>
+                                        <td ><img  th:alt="${product.name}" th:src="@{/images/{filename}(filename=${product.imageUrl})}"></td>
+                                        <td th:text="${product.price}"></td>
+                                        <td>
+                                            <a th:href="@{'product/edit/' + ${product.id}}"
+                                               class="btn btn-primary btn-sm">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a th:href="@{'product/delete/' + ${product.id}}"
+                                               class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- Table -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Recent comment and chats -->
+                <!-- ============================================================== -->
+
+                <!-- ============================================================== -->
+                <!-- Recent comment and chats -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+
+            <div th:replace="dashboard/fragments/footer :: footer"></div>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+
+
+
+<!-- End Slider Script -->
+</body>
+</html>

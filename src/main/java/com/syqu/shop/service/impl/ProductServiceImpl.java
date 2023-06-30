@@ -1,7 +1,11 @@
 package com.syqu.shop.service.impl;
 
+<<<<<<< HEAD
 
 import com.syqu.shop.domain.Product;
+=======
+import com.syqu.shop.model.Product;
+>>>>>>> aaf5c88875e0e2592216b0a48740ce82bc83ae30
 import com.syqu.shop.repository.ProductRepository;
 import com.syqu.shop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,10 +55,10 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAllByOrderByIdAsc();
     }
 
-    @Override
+  /*  @Override
     public List<Product> findAllByCategoryId(long categoryId) {
         return productRepository.findAllByCategoryId(categoryId);
-    }
+    }*/
 
     @Override
     public long count() {

@@ -1,6 +1,6 @@
 package com.syqu.shop.validator;
 
-import com.syqu.shop.domain.Product;
+import com.syqu.shop.model.Product;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;

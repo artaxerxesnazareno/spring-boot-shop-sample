@@ -1,16 +1,29 @@
 package com.syqu.shop.controller;
 
+<<<<<<< HEAD
 
 import com.syqu.shop.domain.Product;
 import com.syqu.shop.service.CategoryService;
 import com.syqu.shop.service.ProductService;
 import com.syqu.shop.service.UploadFileService;
+=======
+import com.syqu.shop.model.Product;
+import com.syqu.shop.service.CategoryService;
+import com.syqu.shop.service.ProductService;
+import com.syqu.shop.service.UploadFileService;
+import com.syqu.shop.service.impl.FileUploadUtil;
+>>>>>>> aaf5c88875e0e2592216b0a48740ce82bc83ae30
 import com.syqu.shop.validator.ProductValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+=======
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+>>>>>>> aaf5c88875e0e2592216b0a48740ce82bc83ae30
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,9 +34,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+<<<<<<< HEAD
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+=======
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.UUID;
+>>>>>>> aaf5c88875e0e2592216b0a48740ce82bc83ae30
 
 @Controller
 public class ProductController {
@@ -45,6 +67,7 @@ public class ProductController {
         this.productValidator = productValidator;
         this.categoryService = categoryService;
     }
+<<<<<<< HEAD
     @PostMapping("/uploadd")
     public String uploadImage(@RequestParam("imageFile") MultipartFile file, RedirectAttributes redirectAttributes, Model model) {
 
@@ -68,13 +91,27 @@ public class ProductController {
         }
 
         return "upload_success";
+=======
+    @GetMapping("/images/{filename}")
+    @ResponseBody
+    public Resource getImage(@PathVariable String filename) {
+        Path file = Paths.get("src/main/resources/static/images", filename);
+        Resource resource;
+        try {
+            resource = new UrlResource(file.toUri());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return resource;
+>>>>>>> aaf5c88875e0e2592216b0a48740ce82bc83ae30
     }
     @GetMapping("/product/new")
     public String newProduct(Model model) {
         model.addAttribute("productForm", new Product());
         model.addAttribute("method", "new");
         model.addAttribute("categories", categoryService.findAll());
-        return "product";
+        return "dashboard/novo_sapato";
     }
 
     @PostMapping("/product/new")
@@ -84,13 +121,22 @@ public class ProductController {
         if (bindingResult.hasErrors()) {
             logger.error(String.valueOf(bindingResult.getFieldError()));
             model.addAttribute("method", "new");
-            return "product";
+            return "dashboard/novo_sapato";
         }
 
         // Processa o upload da image
         MultipartFile file = productForm.getImageFile();
         String nomeImagem = uplaod.saveImagem(file);
 
+<<<<<<< HEAD
+=======
+       /* String fileExtension = FilenameUtils.getExtension(file.getOriginalFilename());
+        String randomFileName = UUID.randomUUID().toString() + "." + fileExtension;
+        String uploadDir = "src/main/resources/static/images/upload/";
+        String filePath = uploadDir + randomFileName;
+
+        FileUploadUtil.saveFile(uploadDir, randomFileName, file);*/
+>>>>>>> aaf5c88875e0e2592216b0a48740ce82bc83ae30
 
 // Define o caminho da imagem no objeto Product
         productForm.setImageUrl(nomeImagem);
@@ -110,7 +156,7 @@ public class ProductController {
             model.addAttribute("productForm", product);
             model.addAttribute("categories", categoryService.findAll());
             model.addAttribute("method", "edit");
-            return "product";
+            return "dashboard/novo_sapato";
         } else {
             return "error/404";
         }
@@ -123,7 +169,7 @@ public class ProductController {
         if (bindingResult.hasErrors()) {
             logger.error(String.valueOf(bindingResult.getFieldError()));
             model.addAttribute("method", "edit");
-            return "product";
+            return "dashboard/novo_sapato" ;
         }
         // Processa o upload da imagem
         MultipartFile file = productForm.getImageFile();

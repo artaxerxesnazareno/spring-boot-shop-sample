@@ -1,8 +1,12 @@
 package com.syqu.shop.controller;
 
+<<<<<<< HEAD
+=======
+import com.syqu.shop.model.PedidoProduct;
+>>>>>>> aaf5c88875e0e2592216b0a48740ce82bc83ae30
 import com.syqu.shop.service.PedidosService;
 import com.syqu.shop.service.ShoppingCartService;
-import com.syqu.shop.domain.Product;
+import com.syqu.shop.model.Product;
 import com.syqu.shop.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +15,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import com.syqu.shop.service.UserService;
+import java.security.Principal;
+import com.syqu.shop.model.User;
+import java.util.HashSet;
+import java.util.Set;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,14 +27,26 @@ import java.util.Set;
 @Controller
 public class CartController {
     private static final Logger logger = LoggerFactory.getLogger(CartController.class);
+<<<<<<< HEAD
     private final ShoppingCartService shoppingCartService;
     private final ProductService productService;
     @Autowired
     private PedidosService pedidosService;
+=======
+>>>>>>> aaf5c88875e0e2592216b0a48740ce82bc83ae30
 
     @Autowired
-    public CartController(ShoppingCartService shoppingCartService, ProductService productService) {
-        this.shoppingCartService = shoppingCartService;
+    private  ShoppingCartService shoppingCartService;
+    private final ProductService productService;
+    @Autowired
+    private PedidosService pedidosService;
+
+     @Autowired
+    private  UserService userService;
+
+    @Autowired
+    public CartController(ProductService productService) {
+
         this.productService = productService;
     }
 
@@ -66,6 +87,7 @@ public class CartController {
     }
 
     @GetMapping("/cart/checkout")
+<<<<<<< HEAD
     public String cartCheckout() {
         Set<Product> list = new HashSet<Product>();
         list = shoppingCartService.productsInCart().keySet();
@@ -73,5 +95,16 @@ public class CartController {
 
         shoppingCartService.cartCheckout();
         return "confirm_checkout";
+=======
+    public String cartCheckout(Principal principal) {
+       User user = userService.findByUsername(principal.getName());
+
+        Set<Product> list = new HashSet<Product>();
+        list = shoppingCartService.productsInCart().keySet();
+        pedidosService.createPedidosSapatos(list, user);
+
+        shoppingCartService.cartCheckout();
+        return "checkout";
+>>>>>>> aaf5c88875e0e2592216b0a48740ce82bc83ae30
     }
 }

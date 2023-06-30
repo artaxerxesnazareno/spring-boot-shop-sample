@@ -1,6 +1,6 @@
 package com.syqu.shop.service;
 
-import com.syqu.shop.domain.Product;
+import com.syqu.shop.model.Product;
 
 import java.util.List;
 
@@ -10,6 +10,6 @@ public interface ProductService {
     void delete(long id);
     Product findById(long id);
     List<Product> findAllByOrderByIdAsc();
-    List<Product> findAllByCategoryId(long categoryId);
+//    List<Product> findAllByCategoryId(long categoryId);
     long count();
 }
