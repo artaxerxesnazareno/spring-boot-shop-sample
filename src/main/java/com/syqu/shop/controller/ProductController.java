@@ -57,7 +57,7 @@ public class ProductController {
         String randomFileName = UUID.randomUUID().toString() + "." + fileExtension;
         String uploadDir = "src/main/resources/static/images/";
 
-        FileUploadUtil.saveFile(uploadDir, randomFileName, file);
+        FileUploadUtil.saveFile(uploadDir, file.getOriginalFilename(), file);
 
 // Define o caminho da imagem no objeto Product
         productForm.setImageUrl(randomFileName);
@@ -96,7 +96,7 @@ public class ProductController {
         String randomFileName = UUID.randomUUID().toString() + "." + fileExtension;
         String uploadDir = "src/main/resources/static/images/";
 
-        FileUploadUtil.saveFile(uploadDir, randomFileName, file);
+        FileUploadUtil.saveFile(uploadDir, file.getOriginalFilename(), file);
 
 // Define o caminho da imagem no objeto Product
         productForm.setImageUrl(randomFileName);
