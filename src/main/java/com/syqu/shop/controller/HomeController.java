@@ -2,6 +2,10 @@ package com.syqu.shop.controller;
 
 import com.syqu.shop.model.Product;
 import com.syqu.shop.service.CategoryService;
+import com.syqu.shop.service.PedidosService;
+import com.syqu.shop.service.impl.UserServiceImpl;
+import com.syqu.shop.service.impl.ProductServiceImpl;
+
 import com.syqu.shop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,45 +22,58 @@ public class HomeController {
 
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private PedidosService pedidosService;
+
+    @Autowired
+    private UserServiceImpl userService;
+    @Autowired
+    private ProductServiceImpl productServices;
 
     @Autowired
     public HomeController(ProductService productService) {
         this.productService = productService;
     }
 
-    @GetMapping(value = {"/","/index","/home"})
-    public String home(Model model){
+    @GetMapping(value = { "/", "/index", "/home" })
+    public String home(Model model) {
         model.addAttribute("products", getAllProducts());
         model.addAttribute("productsCount", productsCount());
         model.addAttribute("categories", categoryService.findAll());
         return "home";
     }
-    @GetMapping(value = {"/dashbord"})
-    public String dashbord(Model model){
+
+    @GetMapping(value = { "/dashbord" })
+    public String dashbord(Model model) {
         model.addAttribute("products", getAllProducts());
         model.addAttribute("productsCount", productsCount());
         model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("totalPedidosValor", pedidosService.totalPedidosValor());
+        model.addAttribute("allPedidos", pedidosService.countAllPedidos());
+        model.addAttribute("allUsers", userService.conutAllUser());
+        model.addAttribute("allProduct", productServices.count());
+
         return "dashboard/dashboard";
     }
 
     @RequestMapping("/searchByCategory")
-    public String homePost(@RequestParam("categoryId") long categoryId, Model model){
-//        model.addAttribute("books", productService.findAllByCategoryId(categoryId));
+    public String homePost(@RequestParam("categoryId") long categoryId, Model model) {
+        // model.addAttribute("books", productService.findAllByCategoryId(categoryId));
         model.addAttribute("booksCount", productService.count());
         model.addAttribute("categories", categoryService.findAll());
         return "home";
     }
 
     @GetMapping("/about")
-    public String about(){
+    public String about() {
         return "about";
     }
 
-    private List<Product> getAllProducts(){
+    private List<Product> getAllProducts() {
         return productService.findAllByOrderByIdAsc();
     }
 
-    private long productsCount(){
+    private long productsCount() {
         return productService.count();
     }
 }

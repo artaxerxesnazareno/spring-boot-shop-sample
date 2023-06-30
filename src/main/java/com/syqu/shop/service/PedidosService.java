@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
-
+import java.math.BigDecimal;
 @Service
 public class PedidosService {
 
@@ -65,4 +65,19 @@ public class PedidosService {
                 .collect(Collectors.toList());
     }
 
+    public BigDecimal totalPedidosValor(){
+        List<Pedidos> pedidosList = pedidosRepository.findAll();
+        BigDecimal totalAmount = BigDecimal.ZERO;
+        for(Pedidos pedidos: pedidosList){
+            double orderTotal = pedidos.getPedidoProducts().stream()
+            .mapToDouble(pedidoProduct -> pedidoProduct.getProduct().getPrice().doubleValue())
+            .sum();
+            totalAmount = totalAmount.add(BigDecimal.valueOf(orderTotal));
+        }
+        return totalAmount;
+    }
+
+    public long countAllPedidos(){
+        return pedidosRepository.count();
+    }
 }

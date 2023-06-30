@@ -64,4 +64,8 @@ public class UserServiceImpl implements UserService {
     public User findById(long id) {
         return userRepository.findById(id);
     }
+
+    public long conutAllUser(){
+        return userRepository.count();
+    }
 }

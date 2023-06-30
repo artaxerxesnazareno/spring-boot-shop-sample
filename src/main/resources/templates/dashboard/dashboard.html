@@ -253,30 +253,27 @@
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Feeds</h4>
+                                <h4 class="card-title">Metricas</h4>
                                 <div class="feed-widget">
                                     <ul class="list-style-none feed-body m-0 p-b-20">
                                         <li class="feed-item">
-                                            <div class="feed-icon bg-info"><i class="far fa-bell"></i></div>
-                                            You have 4
-                                            pending tasks. <span class="ms-auto font-12 text-muted">Just Now</span>
+                                            <div class="feed-icon bg-info"><i class="fa fa-cubes"></i></div>
+                                            <span class="feed-title">Total de Produtos</span> <span class="ms-auto font-12 text-muted" th:text="${allProduct}">Just Now</span>
                                         </li>
                                         <li class="feed-item">
-                                            <div class="feed-icon bg-success"><i class="ti-server"></i></div>
-                                            Server #1
-                                            overloaded.<span class="ms-auto font-12 text-muted">2 Hours ago</span>
+                                            <div class="feed-icon bg-success"><i class="fas fa-users"></i></div>
+                                            <span class="feed-title">Total de Usuários</span><span class="ms-auto font-12 text-muted" th:text="${allUsers}">2 Hours ago</span>
                                         </li>
                                         <li class="feed-item">
-                                            <div class="feed-icon bg-warning"><i class="ti-shopping-cart"></i></div>
-                                            New
-                                            order received.<span class="ms-auto font-12 text-muted">31 May</span>
+                                            <div class="feed-icon bg-warning"><i class="fas fa-shopping-cart"></i></div>
+                                            <span class="feed-title">Total de Pedidos</span><span class="ms-auto font-12 text-muted" th:text="${allPedidos}">31 May</span>
                                         </li>
                                         <li class="feed-item">
-                                            <div class="feed-icon bg-danger"><i class="ti-user"></i></div>
-                                            New user
-                                            registered.<span class="ms-auto font-12 text-muted">30 May</span>
+                                            <div class="feed-icon bg-danger"><i class="fa fa-money"></i></div>
+                                            <span class="feed-title">Lucro</span><span class="ms-auto font-12 text-muted" th:text="${totalPedidosValor}">30 May</span>
                                         </li>
                                     </ul>
+                                    
                                 </div>
                             </div>
                         </div>
