@@ -52,4 +52,9 @@ public class HomeController {
     private long productsCount(){
         return productService.count();
     }
+
+    @GetMapping("/contact")
+    public String contact(){
+        return "contact";
+    }
 }
